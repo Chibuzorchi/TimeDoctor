@@ -10,11 +10,6 @@ test('Verify Main Section', async ({ page }) => {
     expect(page).not.toBeNull();
 })
 
-// test('Verify Hero Section', async ({ page }) => {
-//     const heroSection = await page.locator('Hero Section')
-//     expect(heroSection).not.toBe(null);
-// })
-
 test('Verify Hero Section Title', async ({ page }) => {
     await page.locator('.HeroSec-Title').screenshot({path: './screenshot/Title.png'})
     await expect(page).toHaveTitle('Time Doctor - #1 Workforce Analytics Platform')
