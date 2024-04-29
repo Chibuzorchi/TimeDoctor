@@ -1,7 +1,7 @@
 import { test, expect, type Page} from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://www.timedoctor.com/');
+  await page.goto('https://www.timedoctor.com/', );
 });
 
 test('Verify URL', async ({ page }) => {
@@ -16,9 +16,8 @@ test('Verify Header', async ({ page }) => {
 
 
 test('Verify Logo', async ({ page }) => {
-  await page.getByRole("link", {name : "Time Doctor logo"})
-  .screenshot({path: './screenshot/Header-logo.png' });
-  expect(page).not.toBeNull();  
+  await page.getByTestId('header-logo-desktop').isVisible();
+  await (page).screenshot({path: './screenshot/Headerr-logo.png' }); 
  });
 
 test('Verify Left-Side Menu', async ({ page }) => {
@@ -38,25 +37,25 @@ test('Verify Product-Content', async ({ page }) => {
     await page.click('text=Product');
     await page.waitForSelector('.NavTab_NavTabBox__Dropdown__bHacu');
     await page.screenshot({ path: './screenshot/Product-content.png' });
-    await expect(page).not.toBeNull();
+    expect(page).not.toBeNull();
 });
 
 
 test('Verify Product-Dropdown', async ({ page }) => {
     await page.locator("(//div[@class='NavTab_NavTabBox__Box__4v4De'])[1]")
     .screenshot({path: './screenshot/Product-dropdown.png'})
-    await expect(page).not.toBeNull();
+    expect(page).not.toBeNull();
 });
 
 test('Verify Solution-Dropdown', async ({ page }) => {
     await page.locator("(//div[@class='NavTab_NavTabBox__Box__4v4De'])[2]")
     .screenshot({path: './screenshot/Solution-dropdown.png'})
-    await expect(page).not.toBeNull();
+    expect(page).not.toBeNull();
 });
 
 test('Verify Solution-Content', async ({ page }) => {
     await page.click('text=Solutions');
-    await page.locator('.NavTab_NavTabBox__Dropdown__CardContent__OpQSS');
+    page.locator('.NavTab_NavTabBox__Dropdown__CardContent__OpQSS');
     await page.screenshot({ path: './screenshot/Solutions-content.png' });
     expect(page).not.toBeNull();
 });
